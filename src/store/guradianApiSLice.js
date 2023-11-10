@@ -17,13 +17,14 @@ export const guardianApiSlice = createApi({
     endpoints: (builder) => ({
         getGuardianNews : builder.query({
             query: (payload) =>{ 
+                console.log('payload',payload);
                 // if(payload?.category){
                 //     return `/top-headlines/sources?category=${payload.category}&from=2023-11-03&to=2023-11-03`
                 // }
                 // else{
                 //     return "/top-headlines/sources"
                 // }
-                return "/search?q=current&format=json&show-tags=contributor&show-fields=starRating,headline,thumbnail,short-url&order-by=newest&api-key=fad006a4-6eae-4d1c-819c-2f096b0a8741"
+                return `/search?q=${payload}&format=json&show-tags=contributor&show-fields=starRating,headline,thumbnail,short-url&order-by=newest&api-key=fad006a4-6eae-4d1c-819c-2f096b0a8741`
                 }
             ,
             transformResponse: (response) => {
@@ -47,10 +48,12 @@ export const guardianApiSlice = createApi({
                 }
                 //end response
             },
+            
 
             providesTags: ["TopHeadLinesSource"],
           
         }),
+        
     })
 
 });

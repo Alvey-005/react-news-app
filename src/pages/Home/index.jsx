@@ -3,22 +3,49 @@ import './home.css';
 import NewsArticle from "../../components/ui/newsArticle.jsx";
 import NewsArticleBig from "../../components/ui/newsArticleBig.jsx";
 import { useGetGuardianNewsQuery } from "../../store/guradianApiSLice.js";
-import { useGetTopHeadLinesQuery } from "../../store/newsApiSlice.js";
+import { useGetEverythingQuery ,useGetTopHeadLinesSourceQuery} from "../../store/newsApiSlice.js";
 import { useGetHomeNewsQuery } from "../../store/nyTimesApiSlice.js";
 import Discover from "../../components/ui/Discover.jsx";
-import { discover, newsApiCategory } from "../../constant/index.jsx";
+import { discover, newsApiCategory, preferedListTotal } from "../../constant/index.jsx";
 import Badge from "../../components/ui/Badge.jsx";
 import Heading from "../../components/ui/Heading.jsx";
 import { Link } from "react-router-dom";
+import MainLoadingScreen from "../../components/ui/MainLoadingScreen.jsx";
+import '../../styles/button.css';
+import {store} from '../../store';
+import{ guardianApiSlice } from '../../store/guradianApiSLice.js';
+import { set } from "date-fns";
 
 const Home = () => {
-    const topNews = useGetGuardianNewsQuery({});
-    const newsApiTopNews = useGetTopHeadLinesQuery({})?.data?.articles;
+    const [preferedList,setPreferedList] = React.useState([]);
+    const [showFullPreferedList,setShowFullPreferedList] = React.useState(false);
+    const handleShowFullPreferedList = () => {
+        setShowFullPreferedList(!showFullPreferedList);
+    }
+    let showList = [];
+    if (showFullPreferedList){
+        showList = preferedListTotal
+    }else{
+        showList = preferedListTotal.slice(0,12);
+    }
+    const handlePreferedListAdd =  (val) => {
+        if (preferedList.includes(val)) {
+            setPreferedList(preferedList.filter((item) => item !== val));
+          } else {
+            setPreferedList([...preferedList, val]);
+         }
+
+
+    };
+    console.log('preferedList',preferedList);
+    const sources = useGetTopHeadLinesSourceQuery({})?.data?.sources
+    const topNews = useGetGuardianNewsQuery(preferedList.length>0 ? preferedList.join(","):"current");
+    const newsApiTopNews = useGetEverythingQuery(preferedList.length>0 ? preferedList.join(","):"current")?.data?.articles;
     const nyTimesNews = useGetHomeNewsQuery({
         categoryType: "home"
     })?.data?.articles;
     if (topNews.status === 'pending' || topNews.status === 'rejected') {
-        return <div>Loading...</div>
+        return <MainLoadingScreen />
     }
     const guardianArticles = topNews?.data;
     if (!guardianArticles) {
@@ -30,6 +57,27 @@ const Home = () => {
             <main className="responsive-wrapper">
                 <div className="page-title">
                     <h1>Latest Updates</h1>
+                </div>
+
+<Heading>Select any to customize your feed</Heading>
+ 
+                <div style={{
+                    display:'grid',
+                    marginTop:'20px',
+                    gridTemplateColumns:'repeat(6,1fr)'
+                }}>
+                    {showList.map((val) => (
+                <button onClick={()=>handlePreferedListAdd(val)} class={`fill ${preferedList.includes(val)?"active":""}`}>{val}</button>
+
+                    ))}
+                </div>
+                <div style={{
+                    display:'flex',
+                    justifyContent:'center',
+                    alignItems:'center',
+                    marginTop:'20px'
+                }}>
+                    <button onClick={handleShowFullPreferedList} class={`fill`}>{showFullPreferedList?"Show Less":"Show More"}</button>
                 </div>
                 <div className="magazine-layout">
                     <div className="magazine-column">

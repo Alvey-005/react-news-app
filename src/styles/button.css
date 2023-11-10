@@ -1,0 +1,35 @@
+.fill:hover,
+.fill:active {
+  box-shadow: inset 0 0 0 2em var(--hover);
+}
+
+button {
+  color: var(--color);
+  transition: 0.25s;
+}
+button:hover, button:active {
+  border-color: var(--hover);
+  color: #fff;
+}
+button {
+    --color:#000;
+    --hover:#fb4c35;
+text-transform: capitalize;
+  background: none;
+  border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 1em 2em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:disabled{
+    background:var(--hover);
+    cursor: none;
+}
+
+.active {
+    background-color: var(--hover) !important;
+    color: white;
+  }

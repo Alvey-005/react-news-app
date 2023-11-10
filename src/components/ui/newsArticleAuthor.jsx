@@ -1,6 +1,5 @@
 import AvatarImage from '../../assets/image/avatar.png';
 const NewsArticleAuthor = ({ author,authorImage }) => {
-    console.log('bylineImageUrl',authorImage);
     return (
         <>
             <div className="article-author">

@@ -56,3 +56,12 @@ export const discover = [
 export const newsApiCategory = [
   'business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'
 ]
+export const preferedListTotal = ['business', 'business-economics', 'finance', 'market',
+ 'trade', 'startups', 'entrepreneurship', 'investing', 'stocks', 'global-economy', 
+ 'entertainment', 'celebrities', 'movies', 'music', 'television', 'arts-and-culture', 
+ 'fashion', 'lifestyle', 'general', 'world-news', 'politics', 'current-affairs', 
+ 'breaking-news', 'local-news', 'community', 'health', 'wellness', 'medical-research',
+  'fitness', 'nutrition', 'science', 'space', 'environment', 'research', 'technology', 
+  'innovation', 'gadgets', 'internet', 'cybersecurity', 'software', 'sports', 'football',
+   'basketball', 'soccer', 'tennis', 'golf', 'technology', 'digital', 'software-development',
+    'tech-business']

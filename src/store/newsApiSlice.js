@@ -18,10 +18,10 @@ export const newApiSlice = createApi({
         getTopHeadLinesSource : builder.query({
             query: (payload) =>{ 
                 if(payload?.category){
-                    return `/top-headlines/sources?category=${payload.category}&from=2023-11-03&to=2023-11-03&pageSize=${payload.pageSize||5}`
+                    return `/top-headlines/sources?category=${payload.category}`
                 }
                 else{
-                    return "/top-headlines/sources&pageSize=5"
+                    return "/top-headlines/sources"
                 }
                 }
             ,
@@ -30,8 +30,8 @@ export const newApiSlice = createApi({
         }),
         getEverything: builder.query({
             query: (payload) => {
-                if(payload?.query){
-                    return `/everything?q=${payload.query}`
+                if(payload){
+                    return `/everything?q=${payload}&pageSize=${payload.pageSize||5}`
                 }
                 else{
                     return "/everything"
