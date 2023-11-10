@@ -1,25 +1,12 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import { MAIN_PATH } from "../constant";
 import Layout from "../pages/layout";
-import Check from "../pages/check";
+import Home from "../pages/Home";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Layout />,
-        children:[
-            {
-                path:MAIN_PATH.root,
-                element: <Navigate to = {`/${MAIN_PATH.root}`}/>
-            }
-        
-            
-        ]
-        
+        element: <Home />,
     },
-    {
-        path:'hap',
-        element: <Check />
-    }
   
 ])
 

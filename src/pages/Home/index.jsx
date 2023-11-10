@@ -1,16 +1,16 @@
 import React from "react";
-import './check.css';
-import NewsArticle from "../../components/ui/newsArticle";
-import NewsArticleBig from "../../components/ui/newsArticleBig";
-import { useGetGuardianNewsQuery } from "../../store/guradianApiSLice";
-import { useGetTopHeadLinesQuery } from "../../store/newsApiSlice";
-import { useGetHomeNewsQuery } from "../../store/nyTimesApiSlice";
+import './home.css';
+import NewsArticle from "../../components/ui/newsArticle.jsx";
+import NewsArticleBig from "../../components/ui/newsArticleBig.jsx";
+import { useGetGuardianNewsQuery } from "../../store/guradianApiSLice.js";
+import { useGetTopHeadLinesQuery } from "../../store/newsApiSlice.js";
+import { useGetHomeNewsQuery } from "../../store/nyTimesApiSlice.js";
 import Discover from "../../components/ui/Discover.jsx";
 import { discover } from "../../constant/index.jsx";
-import Badge from "../../components/ui/Badge";
+import Badge from "../../components/ui/Badge.jsx";
 import Heading from "../../components/ui/Heading.jsx";
 
-const Check = () => {
+const Home = () => {
     const topNews = useGetGuardianNewsQuery({});
     const newsApiTopNews = useGetTopHeadLinesQuery({})?.data?.articles;
     const nyTimesNews = useGetHomeNewsQuery({})?.data?.articles;
@@ -83,4 +83,4 @@ const Check = () => {
 
 
 
-export default Check;
+export default Home;

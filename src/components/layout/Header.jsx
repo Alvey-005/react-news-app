@@ -1,6 +1,5 @@
  import NewsIcon from '../../assets/svg/newsIcon.svg';
  const Header = () => {
-    console.log('header');
     return(
         <>
  <header className="header responsive-wrapper">
