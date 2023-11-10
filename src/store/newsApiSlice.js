@@ -18,7 +18,7 @@ export const newApiSlice = createApi({
         getTopHeadLinesSource : builder.query({
             query: (payload) =>{ 
                 if(payload?.category){
-                    return `/top-headlines/sources?category=${payload.category}&from=2023-11-03&to=2023-11-03&pageSize=5`
+                    return `/top-headlines/sources?category=${payload.category}&from=2023-11-03&to=2023-11-03&pageSize=${payload.pageSize||5}`
                 }
                 else{
                     return "/top-headlines/sources&pageSize=5"
@@ -44,6 +44,11 @@ export const newApiSlice = createApi({
             "/top-headlines/?country=us&pageSize=5",
             providesTags: ["TopHeadLines"],
           }),
+          getTopHeadLinesByCategory: builder.query({
+            query: (payload) => 
+            `/top-headlines/?category=${payload.category}&pageSize=${payload.pageSize||5}`,
+            providesTags: ["TopHeadLines"],
+          }),
         
     })
 
@@ -52,4 +57,5 @@ export const {
     useGetEverythingQuery,
     useGetTopHeadLinesSourceQuery,
     useGetTopHeadLinesQuery,
+    useGetTopHeadLinesByCategoryQuery
   } = newApiSlice;

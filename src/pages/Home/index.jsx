@@ -6,9 +6,10 @@ import { useGetGuardianNewsQuery } from "../../store/guradianApiSLice.js";
 import { useGetTopHeadLinesQuery } from "../../store/newsApiSlice.js";
 import { useGetHomeNewsQuery } from "../../store/nyTimesApiSlice.js";
 import Discover from "../../components/ui/Discover.jsx";
-import { discover } from "../../constant/index.jsx";
+import { discover, newsApiCategory } from "../../constant/index.jsx";
 import Badge from "../../components/ui/Badge.jsx";
 import Heading from "../../components/ui/Heading.jsx";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     const topNews = useGetGuardianNewsQuery({});
@@ -50,12 +51,16 @@ const Home = () => {
                     <Heading>More News</Heading>
                         <section className="category">
                             {
-                                discover.map((val) => (
+                                newsApiCategory.map((val) => (
+                                    <Link style={{
+                                        textDecoration:'none'
+                                    }}to={`news-api/${val}`}>
                                     <Badge style={{
                                         postion: 'relative',
                                         margin: '20px 0',
                                         padding:'20px'
-                                    }}>{val.title}</Badge>
+                                    }}>{val}</Badge>
+                                    </Link>
                                 ))
                             }
                         </section>

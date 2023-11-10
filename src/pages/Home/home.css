@@ -138,13 +138,14 @@ img {
 
 .article-author {
     display: flex;
+    align-items: center;
     /* flex-wrap: wrap; */
     margin-top: 1.5rem;
 }
 
 .article-author-img {
     width: 3rem;
-    height: 3rem;
+    height: fit-content;
     border-radius: 12px;
     background-color: #323232;
     overflow: hidden;
