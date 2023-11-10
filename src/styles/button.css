@@ -25,6 +25,7 @@ text-transform: capitalize;
   cursor: pointer;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 button:disabled{
     background:var(--hover);

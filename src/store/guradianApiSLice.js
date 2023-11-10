@@ -24,7 +24,7 @@ export const guardianApiSlice = createApi({
                 // else{
                 //     return "/top-headlines/sources"
                 // }
-                return `/search?q=${payload}&format=json&show-tags=contributor&show-fields=starRating,headline,thumbnail,short-url&order-by=newest&api-key=fad006a4-6eae-4d1c-819c-2f096b0a8741`
+                return `/search?q=${payload}&format=json&show-tags=contributor&show-fields=starRating,headline,thumbnail,short-url&order-by=newest&api-key=${import.meta.env.VITE_GUARDIAN_API_KEY}`
                 }
             ,
             transformResponse: (response) => {

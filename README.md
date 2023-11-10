@@ -1,8 +1,18 @@
-# React + Vite
+# React News APP
+-Inorder to run this project run
+```npm install```
+- create a .env file 
+- give the required credentials 
+- ```npm run dev```
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Implemented Features
+- It fetches Data from 3 sources News APi, The Guardain APi , NY times APi
+- Clicking on the headline takes user into news portal page
+- User can select any Field to customize the news feed
+- Mobile responsive
+## challenges
+- News Api and My times doc didn't provide much information how to send multiple query param
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## new Features to be added 
+- Searching 
+- User Login 
