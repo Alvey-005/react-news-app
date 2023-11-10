@@ -37,10 +37,8 @@ const Home = () => {
 
 
     };
-    console.log('preferedList',preferedList);
-    const sources = useGetTopHeadLinesSourceQuery({})?.data?.sources
     const topNews = useGetGuardianNewsQuery(preferedList.length>0 ? preferedList.join(","):"current");
-    const newsApiTopNews = useGetEverythingQuery(preferedList.length>0 ? preferedList[-1]:"current")?.data?.articles;
+    const newsApiTopNews = useGetEverythingQuery(preferedList.length>0 ? preferedList.at(-1):"current")?.data?.articles;
     const nyTimesNews = useGetHomeNewsQuery({
         categoryType: "home"
     })?.data?.articles;
@@ -63,7 +61,7 @@ const Home = () => {
  
                 <div className="prefered-list">
                     {showList.map((val) => (
-                <button onClick={()=>handlePreferedListAdd(val)} class={`fill ${preferedList.includes(val)?"active":""}`}>{val}</button>
+                <button key={val} onClick={()=>handlePreferedListAdd(val)} className={`fill ${preferedList.includes(val)?"active":""}`}>{val}</button>
 
                     ))}
                 </div>
@@ -73,7 +71,7 @@ const Home = () => {
                     alignItems:'center',
                     marginTop:'20px'
                 }}>
-                    <button onClick={handleShowFullPreferedList} class={`fill`}>{showFullPreferedList?"Show Less":"Show More"}</button>
+                    <button onClick={handleShowFullPreferedList} className={`fill`}>{showFullPreferedList?"Show Less":"Show More"}</button>
                 </div>
                 <div className="magazine-layout">
                     <div className="magazine-column">
@@ -96,7 +94,8 @@ const Home = () => {
                         <section className="category">
                             {
                                 newsApiCategory.map((val) => (
-                                    <Link style={{
+                                    <Link key={val}
+                                     style={{
                                         textDecoration:'none'
                                     }}to={`news-api/${val}`}>
                                     <Badge style={{

@@ -17,13 +17,7 @@ export const guardianApiSlice = createApi({
     endpoints: (builder) => ({
         getGuardianNews : builder.query({
             query: (payload) =>{ 
-                console.log('payload',payload);
-                // if(payload?.category){
-                //     return `/top-headlines/sources?category=${payload.category}&from=2023-11-03&to=2023-11-03`
-                // }
-                // else{
-                //     return "/top-headlines/sources"
-                // }
+
                 return `/search?q=${payload}&format=json&show-tags=contributor&show-fields=starRating,headline,thumbnail,short-url&order-by=newest&api-key=${import.meta.env.VITE_GUARDIAN_API_KEY}`
                 }
             ,

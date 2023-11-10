@@ -1,6 +1,5 @@
 import NewsArticleAuthor from './newsArticleAuthor';
 const NewsArticle = ({ title, description, url, thumbnail,author,authorImage }) => {
-    console.log()
     return (
         <>
             <article className="article">

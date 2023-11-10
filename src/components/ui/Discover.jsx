@@ -7,12 +7,13 @@ const Discover = ({title,discover}) => {
         <div className='container'>
           <Heading>{title}</Heading>
           <div className='content'>
-            {discover.map((val) => {
+            {discover.map((val,idx) => {
               return (
                 <Link style={{
                   textDecoration:'none',
                   color:'unset'
-                }}to={`/ny-times/${val.title}`}>
+                }}to={`/ny-times/${val.title}`}
+                key={idx}>
                 <div className='box'>
                   <div className='img'>
                     <img src={val.cover} alt='' />
