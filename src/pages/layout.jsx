@@ -15,14 +15,22 @@ const Layout = ({children}) => {
     return (
         <>
         <Box sx={{
-            width:'1250px',
-            padding:'0 15px',
+            padding:0,
+            // width:'1250px',
+            media: {
+                sm: {
+                    padding:0,
+                },
+                lg:{
+                    padding:'0 15px',
+                }
+              },
+            
         }}>
             <Header/>
             {/* <Hero/> */}
             <Box sx={{
                 margin:'0 auto',
-                padding:'0 20px'
             
             }}>
             {children}

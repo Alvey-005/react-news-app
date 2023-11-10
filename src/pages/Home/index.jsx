@@ -10,7 +10,7 @@ import { discover, newsApiCategory, preferedListTotal } from "../../constant/ind
 import Badge from "../../components/ui/Badge.jsx";
 import Heading from "../../components/ui/Heading.jsx";
 import { Link } from "react-router-dom";
-import MainLoadingScreen from "../../components/ui/MainLoadingScreen.jsx";
+import MainLoadingScreen from "../../components/ui/MainLoadingScreen";
 import '../../styles/button.css';
 import {store} from '../../store';
 import{ guardianApiSlice } from '../../store/guradianApiSLice.js';
@@ -40,7 +40,7 @@ const Home = () => {
     console.log('preferedList',preferedList);
     const sources = useGetTopHeadLinesSourceQuery({})?.data?.sources
     const topNews = useGetGuardianNewsQuery(preferedList.length>0 ? preferedList.join(","):"current");
-    const newsApiTopNews = useGetEverythingQuery(preferedList.length>0 ? preferedList.join(","):"current")?.data?.articles;
+    const newsApiTopNews = useGetEverythingQuery(preferedList.length>0 ? preferedList[-1]:"current")?.data?.articles;
     const nyTimesNews = useGetHomeNewsQuery({
         categoryType: "home"
     })?.data?.articles;
@@ -61,11 +61,7 @@ const Home = () => {
 
 <Heading>Select any to customize your feed</Heading>
  
-                <div style={{
-                    display:'grid',
-                    marginTop:'20px',
-                    gridTemplateColumns:'repeat(6,1fr)'
-                }}>
+                <div className="prefered-list">
                     {showList.map((val) => (
                 <button onClick={()=>handlePreferedListAdd(val)} class={`fill ${preferedList.includes(val)?"active":""}`}>{val}</button>
 

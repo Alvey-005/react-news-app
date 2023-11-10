@@ -23,6 +23,8 @@ text-transform: capitalize;
   padding: 1em 2em;
   border-radius: 5px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
 }
 button:disabled{
     background:var(--hover);
