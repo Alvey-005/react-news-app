@@ -13,7 +13,9 @@ import Heading from "../../components/ui/Heading.jsx";
 const Home = () => {
     const topNews = useGetGuardianNewsQuery({});
     const newsApiTopNews = useGetTopHeadLinesQuery({})?.data?.articles;
-    const nyTimesNews = useGetHomeNewsQuery({})?.data?.articles;
+    const nyTimesNews = useGetHomeNewsQuery({
+        categoryType: "home"
+    })?.data?.articles;
     if (topNews.status === 'pending' || topNews.status === 'rejected') {
         return <div>Loading...</div>
     }
@@ -24,22 +26,6 @@ const Home = () => {
     const news = guardianArticles.articles;
     return (
         <>
-            {/* <header className="header responsive-wrapper">
-                <div className="header-left">
-                </div>
-                <div className="header-middle">
-                    <a href="#" className="header-link">Call Us (348) 981 872</a>
-                    <span>/</span>
-                    <a href="#" className="header-link">hello@foxnews.com</a>
-                </div>
-                <div className="header-right">
-                    <nav className="header-nav">
-                        <a href="#" className="header-link">Login</a>
-                        <a href="#" className="header-link header-link--button">Get 1 year for $50 USD</a>
-                    </nav>
-                    <button className="header-menu-button">Menu</button>
-                </div>
-            </header> */}
             <main className="responsive-wrapper">
                 <div className="page-title">
                     <h1>Latest Updates</h1>

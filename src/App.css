@@ -110,8 +110,9 @@ body {
     background-color: #fff;
     box-shadow: 0 4px 8px rgb(0 0 0 / 4%), 0 0 2px rgb(0 0 0 / 6%), 0 0 1px rgb(0 0 0 / 4%);
   }
-  .discover .img {
+  .discover img {
     aspect-ratio: 16/9;
+	width: 100%;
     object-fit: cover;
   }
   .discover h1 {

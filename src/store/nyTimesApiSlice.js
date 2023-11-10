@@ -23,7 +23,7 @@ export const nyTimesAPiSlice = createApi({
                 // else{
                 //     return "/top-headlines/sources"
                 // }
-                return "/home.json?api-key=MqddkAw5UiYpNzd8fDr5Rkho5K6fTvl0"
+                return `/${payload.categoryType}.json?api-key=MqddkAw5UiYpNzd8fDr5Rkho5K6fTvl0`
                 }
             ,
             transformResponse: (response) => {

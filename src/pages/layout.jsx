@@ -20,7 +20,13 @@ const Layout = ({children}) => {
         }}>
             <Header/>
             {/* <Hero/> */}
+            <Box sx={{
+                margin:'0 auto',
+                padding:'0 20px'
+            
+            }}>
             {children}
+            </Box>
             <Footer/>
         </Box>
         </>

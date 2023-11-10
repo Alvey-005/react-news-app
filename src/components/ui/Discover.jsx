@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Heading from './Heading';
 const Discover = ({title,discover}) => {
     return(
@@ -8,12 +9,14 @@ const Discover = ({title,discover}) => {
           <div className='content'>
             {discover.map((val) => {
               return (
+                <Link to={`/ny-times/${val.title}`}>
                 <div className='box'>
                   <div className='img'>
                     <img src={val.cover} alt='' />
                   </div>
                   <h1 className='title'>{val.title}</h1>
                 </div>
+                </Link>
               )
             })}
           </div>
